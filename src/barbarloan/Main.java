@@ -4,6 +4,9 @@
  */
 package barbarloan;
 
+import barbarloan.connection.ConnectionDB;
+import java.sql.SQLException;
+
 /**
  *
  * @author Ansori San
@@ -12,9 +15,10 @@ public class Main {
 
     /**
      * @param args the command line arguments
+     * @throws java.sql.SQLException
      */
-    public static void main(String[] args) {
-        // TODO code application logic here
+    public static void main(String[] args) throws SQLException {
+        ConnectionDB conn = (ConnectionDB) ConnectionDB.conn();
     }
     
 }
