@@ -5,6 +5,8 @@
 package barbarloan;
 
 import barbarloan.connection.ConnectionDB;
+import barbarloan.layout.Login;
+import java.sql.Connection;
 import java.sql.SQLException;
 
 /**
@@ -18,7 +20,9 @@ public class Main {
      * @throws java.sql.SQLException
      */
     public static void main(String[] args) throws SQLException {
-        ConnectionDB conn = (ConnectionDB) ConnectionDB.conn();
+        Connection conn = (Connection) ConnectionDB.conn();
+        Login loginFrame = new Login();
+        loginFrame.setVisible(true);
     }
     
 }

@@ -22,7 +22,7 @@ public class ConnectionDB {
             String pass = "";
             DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
             mysqlConfig = DriverManager.getConnection(url, user, pass);
-            JOptionPane.showMessageDialog(null, "connected");
+//            JOptionPane.showMessageDialog(null, "connected");
         } catch(Exception e){
            JOptionPane.showMessageDialog(null, "connection failed");
            System.err.println("connection failed "+e.getMessage());
