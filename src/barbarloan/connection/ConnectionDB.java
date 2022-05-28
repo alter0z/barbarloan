@@ -17,7 +17,7 @@ public class ConnectionDB {
     public static Connection mysqlConfig;
     public static Connection conn()throws SQLException{
         try{
-            String url = "jdbc:mysql://localhost/java_corp";
+            String url = "jdbc:mysql://localhost/barbarloan";
             String user = "root";
             String pass = "";
             DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());

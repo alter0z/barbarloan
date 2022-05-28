@@ -7,8 +7,6 @@ package barbarloan.layout;
 import barbarloan.connection.ConnectionDB;
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import java.sql.Statement;
 import java.sql.ResultSet;
@@ -135,7 +133,7 @@ public class Login extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"Please enter field");
         } else {
           try {
-            Connection conn = (Connection) ConnectionDB.conn();
+            Connection conn = ConnectionDB.conn();
             String sqlQuery = "select*from user where username = '"+username+"' and password = '"+password+"'";
             Statement statement = conn.createStatement();
             ResultSet resultSet = statement.executeQuery(sqlQuery);
