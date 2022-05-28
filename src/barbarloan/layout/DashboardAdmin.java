@@ -4,7 +4,13 @@
  */
 package barbarloan.layout;
 
+import barbarloan.connection.ConnectionDB;
+
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
 /**
  *
@@ -32,11 +38,10 @@ public class DashboardAdmin extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
         jDesktopPane1 = new javax.swing.JDesktopPane();
-        tvRequest = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         reqTable = new javax.swing.JTable();
+        tvRequest = new javax.swing.JLabel();
         Logout = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
         jMenuBar2 = new javax.swing.JMenuBar();
         Data = new javax.swing.JMenu();
         employees = new javax.swing.JMenuItem();
@@ -55,15 +60,6 @@ public class DashboardAdmin extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Admin Dashboard");
 
-        jDesktopPane1.setBackground(new java.awt.Color(255, 51, 51));
-        jDesktopPane1.setName(""); // NOI18N
-        jDesktopPane1.setRequestFocusEnabled(false);
-
-        tvRequest.setFont(new java.awt.Font("Product Sans", 1, 18)); // NOI18N
-        tvRequest.setText("Request");
-        jDesktopPane1.add(tvRequest);
-        tvRequest.setBounds(280, 60, 73, 24);
-
         reqTable.setFont(new java.awt.Font("Product Sans", 0, 12)); // NOI18N
         reqTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -78,25 +74,58 @@ public class DashboardAdmin extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(reqTable);
 
-        jDesktopPane1.add(jScrollPane1);
-        jScrollPane1.setBounds(0, 100, 703, 166);
+        tvRequest.setFont(new java.awt.Font("Product Sans", 1, 18)); // NOI18N
+        tvRequest.setForeground(java.awt.Color.white);
+        tvRequest.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        tvRequest.setText("Request");
+        tvRequest.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
+        Logout.setBackground(java.awt.Color.white);
         Logout.setFont(new java.awt.Font("Product Sans", 1, 12)); // NOI18N
+        Logout.setForeground(new java.awt.Color(33, 150, 243));
         Logout.setText("Logout");
         Logout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 LogoutActionPerformed(evt);
             }
         });
-        jDesktopPane1.add(Logout);
-        Logout.setBounds(620, 510, 71, 25);
 
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\adria\\Downloads\\wp2646216-white-background-hd.jpg")); // NOI18N
-        jLabel1.setToolTipText("");
-        jLabel1.setOpaque(true);
-        jDesktopPane1.add(jLabel1);
-        jLabel1.setBounds(3, 8, 720, 540);
+        jDesktopPane1.setLayer(jScrollPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(tvRequest, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(Logout, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
+        jDesktopPane1.setLayout(jDesktopPane1Layout);
+        jDesktopPane1Layout.setHorizontalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(Logout))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 754, Short.MAX_VALUE))
+                .addContainerGap())
+            .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(tvRequest, javax.swing.GroupLayout.DEFAULT_SIZE, 754, Short.MAX_VALUE)
+                    .addContainerGap()))
+        );
+        jDesktopPane1Layout.setVerticalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(Logout)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(30, Short.MAX_VALUE))
+            .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(tvRequest)
+                    .addContainerGap(403, Short.MAX_VALUE)))
+        );
 
         jMenuBar2.setFont(new java.awt.Font("Product Sans", 0, 12)); // NOI18N
 
@@ -185,7 +214,6 @@ public class DashboardAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_returnsActionPerformed
 
     private void employeesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_employeesActionPerformed
-        // TODO add your handling code here:
         Employees employees = new Employees();
         jDesktopPane1.add(employees);
         employees.setVisible(true);
@@ -212,40 +240,37 @@ public class DashboardAdmin extends javax.swing.JFrame {
         new Login().setVisible(true);
     }//GEN-LAST:event_LogoutActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-//    public static void main(String args[]) {
-//        /* Set the Nimbus look and feel */
-//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-//         */
-//        try {
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                if ("Nimbus".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-//            }
-//        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(DashboardAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(DashboardAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(DashboardAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(DashboardAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
-//        //</editor-fold>
-//
-//        /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new DashboardAdmin().setVisible(true);
-//            }
-//        });
-//    }
+    private void showTable(JTable table) {
+        DefaultTableModel tableModel = new DefaultTableModel();
+        tableModel.addColumn("#");
+        tableModel.addColumn("Name");
+        tableModel.addColumn("address");
+        tableModel.addColumn("Telp");
+
+
+        try {
+            Connection conn = ConnectionDB.conn();
+            String sqlQuery = "select*from employees";
+            Statement statement = conn.createStatement();
+            ResultSet resultSet = statement.executeQuery(sqlQuery);
+            int no = 0;
+
+            while (resultSet.next()) {
+                no++;
+                tableModel.addRow(new Object[] {
+                        no,
+                        resultSet.getString(2),
+                        resultSet.getString(3),
+                        resultSet.getString(4)
+                });
+            }
+
+            table.setModel(tableModel);
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,e.toString());
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu Data;
@@ -255,7 +280,6 @@ public class DashboardAdmin extends javax.swing.JFrame {
     private javax.swing.JMenuItem borrow;
     private javax.swing.JMenuItem employees;
     private javax.swing.JDesktopPane jDesktopPane1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
