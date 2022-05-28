@@ -286,7 +286,6 @@ public class Employees extends javax.swing.JInternalFrame {
 
     private void employeeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_employeeMouseClicked
         int row = employee.rowAtPoint(evt.getPoint());
-//                int col = table.columnAtPoint(e.getPoint());
 
         String name = employee.getValueAt(row,1).toString();
         String telp = employee.getValueAt(row,2).toString();
