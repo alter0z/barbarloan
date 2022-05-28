@@ -4,6 +4,8 @@
  */
 package barbarloan.layout;
 
+import javax.swing.*;
+
 /**
  *
  * @author Ansori San
@@ -29,11 +31,12 @@ public class DashboardAdmin extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
-        jPanel1 = new javax.swing.JPanel();
+        jDesktopPane1 = new javax.swing.JDesktopPane();
+        tvRequest = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         reqTable = new javax.swing.JTable();
-        tvRequest = new javax.swing.JLabel();
         Logout = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar2 = new javax.swing.JMenuBar();
         Data = new javax.swing.JMenu();
         employees = new javax.swing.JMenuItem();
@@ -52,7 +55,14 @@ public class DashboardAdmin extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Admin Dashboard");
 
-        jPanel1.setBackground(java.awt.Color.white);
+        jDesktopPane1.setBackground(new java.awt.Color(255, 51, 51));
+        jDesktopPane1.setName(""); // NOI18N
+        jDesktopPane1.setRequestFocusEnabled(false);
+
+        tvRequest.setFont(new java.awt.Font("Product Sans", 1, 18)); // NOI18N
+        tvRequest.setText("Request");
+        jDesktopPane1.add(tvRequest);
+        tvRequest.setBounds(280, 60, 73, 24);
 
         reqTable.setFont(new java.awt.Font("Product Sans", 0, 12)); // NOI18N
         reqTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -68,8 +78,8 @@ public class DashboardAdmin extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(reqTable);
 
-        tvRequest.setFont(new java.awt.Font("Product Sans", 1, 18)); // NOI18N
-        tvRequest.setText("Request");
+        jDesktopPane1.add(jScrollPane1);
+        jScrollPane1.setBounds(0, 100, 703, 166);
 
         Logout.setFont(new java.awt.Font("Product Sans", 1, 12)); // NOI18N
         Logout.setText("Logout");
@@ -78,36 +88,15 @@ public class DashboardAdmin extends javax.swing.JFrame {
                 LogoutActionPerformed(evt);
             }
         });
+        jDesktopPane1.add(Logout);
+        Logout.setBounds(620, 510, 71, 25);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(Logout)
-                .addGap(33, 33, 33))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 703, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(329, 329, 329)
-                        .addComponent(tvRequest)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(41, 41, 41)
-                .addComponent(tvRequest)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(Logout)
-                .addContainerGap(35, Short.MAX_VALUE))
-        );
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\adria\\Downloads\\wp2646216-white-background-hd.jpg")); // NOI18N
+        jLabel1.setToolTipText("");
+        jLabel1.setOpaque(true);
+        jDesktopPane1.add(jLabel1);
+        jLabel1.setBounds(3, 8, 720, 540);
 
         jMenuBar2.setFont(new java.awt.Font("Product Sans", 0, 12)); // NOI18N
 
@@ -181,11 +170,11 @@ public class DashboardAdmin extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jDesktopPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jDesktopPane1)
         );
 
         pack();
@@ -195,13 +184,11 @@ public class DashboardAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_returnsActionPerformed
 
-    private void LogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogoutActionPerformed
-        this.setVisible(false);
-        new Login().setVisible(true);
-    }//GEN-LAST:event_LogoutActionPerformed
-
     private void employeesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_employeesActionPerformed
         // TODO add your handling code here:
+        Employees employees = new Employees();
+        jDesktopPane1.add(employees);
+        employees.setVisible(true);
     }//GEN-LAST:event_employeesActionPerformed
 
     private void employeesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_employeesMouseClicked
@@ -219,6 +206,11 @@ public class DashboardAdmin extends javax.swing.JFrame {
     private void borrowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_borrowActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_borrowActionPerformed
+
+    private void LogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogoutActionPerformed
+        this.setVisible(false);
+        new Login().setVisible(true);
+    }//GEN-LAST:event_LogoutActionPerformed
 
     /**
      * @param args the command line arguments
@@ -262,11 +254,12 @@ public class DashboardAdmin extends javax.swing.JFrame {
     private javax.swing.JMenu User;
     private javax.swing.JMenuItem borrow;
     private javax.swing.JMenuItem employees;
+    private javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuBar jMenuBar2;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable reqTable;
     private javax.swing.JMenuItem returns;
