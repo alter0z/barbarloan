@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="AutoImportSettings">
-    <option name="autoReloadType" value="SELECTIVE" />
-  </component>
   <component name="ChangeListManager">
-    <list default="true" id="609d34c6-8f46-4d43-ad17-062f3256db24" name="Changes" comment="Update" />
+    <list default="true" id="e14409b9-9856-485b-bb2c-cdfa727a0441" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -16,7 +16,7 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="29mrWIdqxpzNdm5skle3ZTpCjg0" />
+  <component name="ProjectId" id="29mq0nkSB40vBmZGi4TlqeqdXwy" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -26,65 +26,21 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "C:/mysql-connector-java-8.0.29.jar",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.15",
+    "last_opened_file_path": "C:/Users/Ansori San/Downloads/Documents/Perkuliahan RPL/Semester 4/Object Oriented Programming/12/mysql-connector-java-8.0.27.jar",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0"
   }
 }]]></component>
-  <component name="RunManager">
-    <configuration name="Login" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="barbarloan.layout.Login" />
-      <module name="barbarloan" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="barbarloan.layout.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Application.Login" />
-      </list>
-    </recent_temporary>
-  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="609d34c6-8f46-4d43-ad17-062f3256db24" name="Changes" comment="" />
-      <created>1653729143463</created>
+      <changelist id="e14409b9-9856-485b-bb2c-cdfa727a0441" name="Changes" comment="" />
+      <created>1653728390381</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1653729143463</updated>
+      <updated>1653728390381</updated>
     </task>
-    <task id="LOCAL-00001" summary="Update">
-      <created>1653745699239</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1653745699239</updated>
-    </task>
-    <option name="localTasksCounter" value="2" />
     <servers />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="Update" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update" />
   </component>
 </project>
