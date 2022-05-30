@@ -19,14 +19,14 @@ import java.sql.Statement;
  *
  * @author adria
  */
-public class Employees extends javax.swing.JInternalFrame {
+public class Tools extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form Employees
      */
-    public Employees() {
+    public Tools() {
         initComponents();
-        showTable(employees);
+        showTable(tools);
     }
 
     /**
@@ -41,21 +41,19 @@ public class Employees extends javax.swing.JInternalFrame {
         jPanel1 = new javax.swing.JPanel();
         clear = new javax.swing.JButton();
         submit = new javax.swing.JButton();
-        Taddress = new javax.swing.JTextField();
-        Ttelp = new javax.swing.JTextField();
+        Tstock = new javax.swing.JTextField();
         Tname = new javax.swing.JTextField();
-        LAddress = new javax.swing.JLabel();
         LName = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        employees = new javax.swing.JTable();
-        telp = new javax.swing.JLabel();
+        tools = new javax.swing.JTable();
+        stock = new javax.swing.JLabel();
         edit = new javax.swing.JButton();
         delete = new javax.swing.JButton();
 
         setBackground(java.awt.Color.white);
         setClosable(true);
         setResizable(true);
-        setTitle("Data Employees");
+        setTitle("Data Tools");
         setToolTipText("");
 
         jPanel1.setBackground(java.awt.Color.white);
@@ -80,39 +78,34 @@ public class Employees extends javax.swing.JInternalFrame {
             }
         });
 
-        Taddress.setFont(new java.awt.Font("Product Sans", 0, 12)); // NOI18N
-
-        Ttelp.setFont(new java.awt.Font("Product Sans", 0, 12)); // NOI18N
+        Tstock.setFont(new java.awt.Font("Product Sans", 0, 12)); // NOI18N
 
         Tname.setFont(new java.awt.Font("Product Sans", 0, 12)); // NOI18N
-
-        LAddress.setFont(new java.awt.Font("Product Sans", 1, 14)); // NOI18N
-        LAddress.setText("Address");
 
         LName.setFont(new java.awt.Font("Product Sans", 1, 14)); // NOI18N
         LName.setText("Name");
 
-        employees.setFont(new java.awt.Font("Product Sans", 0, 12)); // NOI18N
-        employees.setModel(new javax.swing.table.DefaultTableModel(
+        tools.setFont(new java.awt.Font("Product Sans", 0, 12)); // NOI18N
+        tools.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "#", "Name", "Address", "Telp", "id"
+                "#", "Name", "Stock", "id"
             }
         ));
-        employees.addMouseListener(new java.awt.event.MouseAdapter() {
+        tools.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                employeesMouseClicked(evt);
+                toolsMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(employees);
+        jScrollPane1.setViewportView(tools);
 
-        telp.setFont(new java.awt.Font("Product Sans", 1, 14)); // NOI18N
-        telp.setText("Telp");
+        stock.setFont(new java.awt.Font("Product Sans", 1, 14)); // NOI18N
+        stock.setText("Stock");
 
         edit.setBackground(new java.awt.Color(33, 150, 243));
         edit.setFont(new java.awt.Font("Product Sans", 1, 12)); // NOI18N
@@ -153,13 +146,11 @@ public class Employees extends javax.swing.JInternalFrame {
                     .addContainerGap()
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(LName)
-                        .addComponent(telp)
-                        .addComponent(LAddress))
-                    .addGap(18, 18, 18)
+                        .addComponent(stock))
+                    .addGap(37, 37, 37)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(Ttelp, javax.swing.GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE)
-                        .addComponent(Tname, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
-                        .addComponent(Taddress, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE))
+                        .addComponent(Tstock, javax.swing.GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE)
+                        .addComponent(Tname, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap()))
@@ -173,7 +164,7 @@ public class Employees extends javax.swing.JInternalFrame {
                     .addComponent(edit)
                     .addComponent(delete)
                     .addComponent(clear))
-                .addContainerGap(200, Short.MAX_VALUE))
+                .addContainerGap(292, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addContainerGap()
@@ -184,12 +175,8 @@ public class Employees extends javax.swing.JInternalFrame {
                                 .addComponent(Tname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(telp)
-                                .addComponent(Ttelp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(LAddress)
-                                .addComponent(Taddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(stock)
+                                .addComponent(Tstock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addContainerGap(107, Short.MAX_VALUE)))
         );
@@ -210,61 +197,58 @@ public class Employees extends javax.swing.JInternalFrame {
 
     private void submitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitActionPerformed
         String name = Tname.getText();
-        String address = Taddress.getText();
-        String telp = Ttelp.getText();
+        String stock = Tstock.getText();
 
-        if (address.isEmpty() || name.isEmpty() || telp.isEmpty()) {
+        if (name.isEmpty() || stock.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Please Fill The Data!");
         } else {
             try {
+                int stockInt = Integer.parseInt(stock);
                 Connection conn = ConnectionDB.conn();
-                String sqlQuery = "insert into employees values(null,'" + name + "','" + telp + "','" + address + "')";
+                String sqlQuery = "insert into tool values(null,'" + name + "','" + stockInt + "')";
                 PreparedStatement preparedStatement = conn.prepareStatement(sqlQuery);
                 preparedStatement.execute();
                 JOptionPane.showMessageDialog(null, "Data Added!");
             } catch (Exception ex) {
-                JOptionPane.showMessageDialog(null, ex.toString());
+                JOptionPane.showMessageDialog(null, "Stock Must Number!");
             }
 
-            showTable(employees);
+            showTable(tools);
             Tname.setText("");
-            Taddress.setText("");
-            Ttelp.setText("");
+            Tstock.setText("");
         }
     }//GEN-LAST:event_submitActionPerformed
 
     private void clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearActionPerformed
         Tname.setText("");
-        Taddress.setText("");
-        Ttelp.setText("");
+        Tstock.setText("");
         this.ID = "";
     }//GEN-LAST:event_clearActionPerformed
 
     private void editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editActionPerformed
         String name = Tname.getText();
-        String address = Taddress.getText();
-        String telp = Ttelp.getText();
+        String stock = Tstock.getText();
 
-        if (address.isEmpty() || name.isEmpty() || telp.isEmpty()) {
+        if (name.isEmpty() || stock.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Please Fill The Data!");
         } else if (ID.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Select Data You Want To Edit!");
         } else {
             try {
+                int stockInt = Integer.parseInt(stock);
                 Connection conn = ConnectionDB.conn();
-                String sqlQuery = "update employees set name ='" + name + "', telp = '" + telp + "', address = '" + address + "' where id = " + ID;
+                String sqlQuery = "update tool set name ='" + name + "', stock = '" + stockInt + "' where id = " + ID;
                 PreparedStatement preparedStatement = conn.prepareStatement(sqlQuery);
                 preparedStatement.execute();
                 JOptionPane.showMessageDialog(null, "Data Edited!");
                 this.ID = "";
             } catch (Exception ex) {
-                JOptionPane.showMessageDialog(null, ex.toString());
+                JOptionPane.showMessageDialog(null, "Stock Must Number!");
             }
 
-            showTable(employees);
+            showTable(tools);
             Tname.setText("");
-            Taddress.setText("");
-            Ttelp.setText("");
+            Tstock.setText("");
         }
     }//GEN-LAST:event_editActionPerformed
 
@@ -274,46 +258,41 @@ public class Employees extends javax.swing.JInternalFrame {
         } else {
             try {
                 Connection conn = ConnectionDB.conn();
-                String sqlQuery = "delete from employees where id = " + ID;
+                String sqlQuery = "delete from tool where id = " + ID;
                 PreparedStatement preparedStatement = conn.prepareStatement(sqlQuery);
                 preparedStatement.execute();
                 JOptionPane.showMessageDialog(null, "Data Deleted!");
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(null, ex.toString());
             }
-            showTable(employees);
+            showTable(tools);
             Tname.setText("");
-            Taddress.setText("");
-            Ttelp.setText("");
+            Tstock.setText("");
             ID = "";
         }
     }//GEN-LAST:event_deleteActionPerformed
 
-    private void employeesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_employeesMouseClicked
-        int row = employees.rowAtPoint(evt.getPoint());
+    private void toolsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_toolsMouseClicked
+        int row = tools.rowAtPoint(evt.getPoint());
 
-        String name = employees.getValueAt(row, 1).toString();
-        String telp = employees.getValueAt(row, 2).toString();
-        String address = employees.getValueAt(row, 3).toString();
+        String name = tools.getValueAt(row, 1).toString();
+        String stock = tools.getValueAt(row, 2).toString();
 
-        ID = employees.getModel().getValueAt(employees.getSelectedRow(), 4).toString();
+        ID = tools.getModel().getValueAt(tools.getSelectedRow(), 3).toString();
         Tname.setText(name);
-        Ttelp.setText(telp);
-        Taddress.setText(address);
-
-    }//GEN-LAST:event_employeesMouseClicked
+        Tstock.setText(stock);
+    }//GEN-LAST:event_toolsMouseClicked
 
     private void showTable(JTable table) {
         DefaultTableModel tableModel = new DefaultTableModel();
         tableModel.addColumn("#");
         tableModel.addColumn("Name");
-        tableModel.addColumn("Telp");
-        tableModel.addColumn("address");
+        tableModel.addColumn("Stock");
         tableModel.addColumn("");
 
         try {
             Connection conn = ConnectionDB.conn();
-            String sqlQuery = "select*from employees";
+            String sqlQuery = "select*from tool";
             Statement statement = conn.createStatement();
             ResultSet resultSet = statement.executeQuery(sqlQuery);
             int no = 0;
@@ -324,7 +303,6 @@ public class Employees extends javax.swing.JInternalFrame {
                     no,
                     resultSet.getString(2),
                     resultSet.getString(3),
-                    resultSet.getString(4),
                     resultSet.getString(1)
                 });
             }
@@ -335,23 +313,21 @@ public class Employees extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, e.toString());
         }
 
-        employees.removeColumn(employees.getColumnModel().getColumn(4));
+        tools.removeColumn(tools.getColumnModel().getColumn(3));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel LAddress;
     private javax.swing.JLabel LName;
-    private javax.swing.JTextField Taddress;
     private javax.swing.JTextField Tname;
-    private javax.swing.JTextField Ttelp;
+    private javax.swing.JTextField Tstock;
     private javax.swing.JButton clear;
     private javax.swing.JButton delete;
     private javax.swing.JButton edit;
-    private javax.swing.JTable employees;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel stock;
     private javax.swing.JButton submit;
-    private javax.swing.JLabel telp;
+    private javax.swing.JTable tools;
     // End of variables declaration//GEN-END:variables
 private String ID = "";
 }

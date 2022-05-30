@@ -57,7 +57,7 @@ public class DashboardAdmin extends javax.swing.JFrame {
         jMenu2.setText("Edit");
         jMenuBar1.add(jMenu2);
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Admin Dashboard");
 
         reqTable.setFont(new java.awt.Font("Product Sans", 0, 12)); // NOI18N
@@ -224,7 +224,9 @@ public class DashboardAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_employeesMouseClicked
 
     private void toolsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_toolsActionPerformed
-        // TODO add your handling code here:
+       Tools tools = new Tools();
+        jDesktopPane1.add(tools);
+        tools.setVisible(true);
     }//GEN-LAST:event_toolsActionPerformed
 
     private void UserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UserActionPerformed
