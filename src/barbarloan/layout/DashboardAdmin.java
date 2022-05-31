@@ -45,8 +45,8 @@ public class DashboardAdmin extends javax.swing.JFrame {
         jMenuBar2 = new javax.swing.JMenuBar();
         Data = new javax.swing.JMenu();
         employees = new javax.swing.JMenuItem();
+        usersMenuItem = new javax.swing.JMenuItem();
         tools = new javax.swing.JMenuItem();
-        User = new javax.swing.JMenu();
         Log = new javax.swing.JMenu();
         borrow = new javax.swing.JMenuItem();
         returns = new javax.swing.JMenuItem();
@@ -147,6 +147,15 @@ public class DashboardAdmin extends javax.swing.JFrame {
         });
         Data.add(employees);
 
+        usersMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        usersMenuItem.setText("Users");
+        usersMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                usersMenuItemActionPerformed(evt);
+            }
+        });
+        Data.add(usersMenuItem);
+
         tools.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         tools.setFont(new java.awt.Font("Product Sans", 0, 12)); // NOI18N
         tools.setText("Tools");
@@ -158,15 +167,6 @@ public class DashboardAdmin extends javax.swing.JFrame {
         Data.add(tools);
 
         jMenuBar2.add(Data);
-
-        User.setText("User");
-        User.setFont(new java.awt.Font("Product Sans", 0, 12)); // NOI18N
-        User.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                UserActionPerformed(evt);
-            }
-        });
-        jMenuBar2.add(User);
 
         Log.setText("Log");
         Log.setFont(new java.awt.Font("Product Sans", 0, 12)); // NOI18N
@@ -229,10 +229,6 @@ public class DashboardAdmin extends javax.swing.JFrame {
         tools.setVisible(true);
     }//GEN-LAST:event_toolsActionPerformed
 
-    private void UserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UserActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_UserActionPerformed
-
     private void borrowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_borrowActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_borrowActionPerformed
@@ -241,6 +237,12 @@ public class DashboardAdmin extends javax.swing.JFrame {
         this.setVisible(false);
         new Login().setVisible(true);
     }//GEN-LAST:event_LogoutActionPerformed
+
+    private void usersMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usersMenuItemActionPerformed
+        User users = new User();
+        jDesktopPane1.add(users);
+        users.setVisible(true);
+    }//GEN-LAST:event_usersMenuItemActionPerformed
 
     private void showTable(JTable table) {
         DefaultTableModel tableModel = new DefaultTableModel();
@@ -278,7 +280,6 @@ public class DashboardAdmin extends javax.swing.JFrame {
     private javax.swing.JMenu Data;
     private javax.swing.JMenu Log;
     private javax.swing.JButton Logout;
-    private javax.swing.JMenu User;
     private javax.swing.JMenuItem borrow;
     private javax.swing.JMenuItem employees;
     private javax.swing.JDesktopPane jDesktopPane1;
@@ -291,5 +292,6 @@ public class DashboardAdmin extends javax.swing.JFrame {
     private javax.swing.JMenuItem returns;
     private javax.swing.JMenuItem tools;
     private javax.swing.JLabel tvRequest;
+    private javax.swing.JMenuItem usersMenuItem;
     // End of variables declaration//GEN-END:variables
 }

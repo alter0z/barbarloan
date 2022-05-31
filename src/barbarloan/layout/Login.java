@@ -40,6 +40,8 @@ public class Login extends javax.swing.JFrame {
         tvPassword = new javax.swing.JLabel();
         etPassword = new javax.swing.JTextField();
         login = new javax.swing.JButton();
+        tvRole = new javax.swing.JLabel();
+        etRole = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -70,26 +72,41 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
+        tvRole.setFont(new java.awt.Font("Product Sans", 1, 14)); // NOI18N
+        tvRole.setText("Role");
+
+        etRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin", "Employee" }));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(login)
-                    .addComponent(tvLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(tvLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(131, 131, 131)
+                        .addComponent(login)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(12, 12, 12)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(tvUsername)
-                    .addComponent(tvPassword))
+                    .addComponent(tvPassword)
+                    .addComponent(tvRole))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(etPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
-                    .addComponent(etUsername))
-                .addGap(12, 12, 12))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(etPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
+                            .addComponent(etUsername))
+                        .addGap(12, 12, 12))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(etRole, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -105,8 +122,12 @@ public class Login extends javax.swing.JFrame {
                     .addComponent(tvPassword)
                     .addComponent(etPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tvRole)
+                    .addComponent(etRole, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
                 .addComponent(login)
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addGap(18, 18, 18))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -119,7 +140,7 @@ public class Login extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -128,22 +149,29 @@ public class Login extends javax.swing.JFrame {
     private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
         String username = etUsername.getText();
         String password = etPassword.getText();
+        int roleIndex = etRole.getSelectedIndex() + 1;
         
         if (username.isEmpty() || password.isEmpty()) {
             JOptionPane.showMessageDialog(null,"Please enter field");
         } else {
           try {
             Connection conn = ConnectionDB.conn();
-            String sqlQuery = "select*from user where username = '"+username+"' and password = '"+password+"'";
+            String sqlQuery = "select*from user where username = '"+username+"' and password = '"+password+"' and role_id = " + roleIndex + "";
             Statement statement = conn.createStatement();
             ResultSet resultSet = statement.executeQuery(sqlQuery);
             
             if (resultSet.next()) {
                 JOptionPane.showMessageDialog(null,"Login successful");
-                this.setVisible(false);
-                new DashboardAdmin().setVisible(true);
+                
+                if (roleIndex == 1) {
+                    this.setVisible(false);
+                    new DashboardAdmin().setVisible(true);   
+                } else {
+                    this.setVisible(true);
+                    JOptionPane.showMessageDialog(null,"You are an employee!");
+                }
             } else {
-                JOptionPane.showMessageDialog(null,"Invalid username or password");
+                JOptionPane.showMessageDialog(null,"Invalid username or password or role");
             }
           } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null,ex.getMessage());
@@ -190,11 +218,13 @@ public class Login extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField etPassword;
+    private javax.swing.JComboBox<String> etRole;
     private javax.swing.JTextField etUsername;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton login;
     private javax.swing.JLabel tvLogin;
     private javax.swing.JLabel tvPassword;
+    private javax.swing.JLabel tvRole;
     private javax.swing.JLabel tvUsername;
     // End of variables declaration//GEN-END:variables
 }
