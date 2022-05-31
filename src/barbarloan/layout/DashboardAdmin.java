@@ -23,6 +23,7 @@ public class DashboardAdmin extends javax.swing.JFrame {
      */
     public DashboardAdmin() {
         initComponents();
+        this.showTable(reqTable);
     }
 
     /**
