@@ -26,7 +26,7 @@ public class Employees extends javax.swing.JInternalFrame {
      */
     public Employees() {
         initComponents();
-        showTable(employees);
+        this.showTable(employeeTable);
     }
 
     /**
@@ -39,18 +39,8 @@ public class Employees extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        clear = new javax.swing.JButton();
-        submit = new javax.swing.JButton();
-        Taddress = new javax.swing.JTextField();
-        Ttelp = new javax.swing.JTextField();
-        Tname = new javax.swing.JTextField();
-        LAddress = new javax.swing.JLabel();
-        LName = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        employees = new javax.swing.JTable();
-        telp = new javax.swing.JLabel();
-        edit = new javax.swing.JButton();
-        delete = new javax.swing.JButton();
+        employeeTable = new javax.swing.JTable();
 
         setBackground(java.awt.Color.white);
         setClosable(true);
@@ -60,138 +50,59 @@ public class Employees extends javax.swing.JInternalFrame {
 
         jPanel1.setBackground(java.awt.Color.white);
 
-        clear.setBackground(new java.awt.Color(220, 220, 220));
-        clear.setFont(new java.awt.Font("Product Sans", 1, 12)); // NOI18N
-        clear.setForeground(new java.awt.Color(33, 150, 243));
-        clear.setText("Clear");
-        clear.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                clearActionPerformed(evt);
-            }
-        });
-
-        submit.setBackground(new java.awt.Color(33, 150, 243));
-        submit.setFont(new java.awt.Font("Product Sans", 1, 12)); // NOI18N
-        submit.setForeground(java.awt.Color.white);
-        submit.setText("Save");
-        submit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                submitActionPerformed(evt);
-            }
-        });
-
-        Taddress.setFont(new java.awt.Font("Product Sans", 0, 12)); // NOI18N
-
-        Ttelp.setFont(new java.awt.Font("Product Sans", 0, 12)); // NOI18N
-
-        Tname.setFont(new java.awt.Font("Product Sans", 0, 12)); // NOI18N
-
-        LAddress.setFont(new java.awt.Font("Product Sans", 1, 14)); // NOI18N
-        LAddress.setText("Address");
-
-        LName.setFont(new java.awt.Font("Product Sans", 1, 14)); // NOI18N
-        LName.setText("Name");
-
-        employees.setFont(new java.awt.Font("Product Sans", 0, 12)); // NOI18N
-        employees.setModel(new javax.swing.table.DefaultTableModel(
+        employeeTable.setFont(new java.awt.Font("Product Sans", 0, 12)); // NOI18N
+        employeeTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "#", "Name", "Address", "Telp", "id"
+                "ID", "Username", "Password", "Role Id", "Name", "Phone", "Address"
             }
-        ));
-        employees.addMouseListener(new java.awt.event.MouseAdapter() {
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        employeeTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                employeesMouseClicked(evt);
+                employeeTableMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(employees);
-
-        telp.setFont(new java.awt.Font("Product Sans", 1, 14)); // NOI18N
-        telp.setText("Telp");
-
-        edit.setBackground(new java.awt.Color(33, 150, 243));
-        edit.setFont(new java.awt.Font("Product Sans", 1, 12)); // NOI18N
-        edit.setForeground(java.awt.Color.white);
-        edit.setText("Edit");
-        edit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                editActionPerformed(evt);
-            }
-        });
-
-        delete.setBackground(new java.awt.Color(33, 150, 243));
-        delete.setFont(new java.awt.Font("Product Sans", 1, 12)); // NOI18N
-        delete.setForeground(java.awt.Color.white);
-        delete.setText("Delete");
-        delete.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                deleteActionPerformed(evt);
-            }
-        });
+        jScrollPane1.setViewportView(employeeTable);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(submit)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(edit)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(delete)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(clear, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(483, Short.MAX_VALUE))
+            .addGap(0, 764, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(LName)
-                        .addComponent(telp)
-                        .addComponent(LAddress))
-                    .addGap(18, 18, 18)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(Ttelp, javax.swing.GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE)
-                        .addComponent(Tname, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
-                        .addComponent(Taddress, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap()))
+                    .addGap(61, 61, 61)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 641, Short.MAX_VALUE)
+                    .addGap(62, 62, 62)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(117, 117, 117)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(submit)
-                    .addComponent(edit)
-                    .addComponent(delete)
-                    .addComponent(clear))
-                .addContainerGap(200, Short.MAX_VALUE))
+            .addGap(0, 434, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(LName)
-                                .addComponent(Tname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(telp)
-                                .addComponent(Ttelp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(LAddress)
-                                .addComponent(Taddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap(107, Short.MAX_VALUE)))
+                    .addGap(30, 30, 30)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(31, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -208,112 +119,39 @@ public class Employees extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void submitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitActionPerformed
-        String name = Tname.getText();
-        String address = Taddress.getText();
-        String telp = Ttelp.getText();
-
-        if (address.isEmpty() || name.isEmpty() || telp.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Please Fill The Data!");
-        } else {
-            try {
-                Connection conn = ConnectionDB.conn();
-                String sqlQuery = "insert into employees values(null,'" + name + "','" + telp + "','" + address + "')";
-                PreparedStatement preparedStatement = conn.prepareStatement(sqlQuery);
-                preparedStatement.execute();
-                JOptionPane.showMessageDialog(null, "Data Added!");
-            } catch (Exception ex) {
-                JOptionPane.showMessageDialog(null, ex.toString());
-            }
-
-            showTable(employees);
-            Tname.setText("");
-            Taddress.setText("");
-            Ttelp.setText("");
-        }
-    }//GEN-LAST:event_submitActionPerformed
-
-    private void clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearActionPerformed
-        Tname.setText("");
-        Taddress.setText("");
-        Ttelp.setText("");
-        this.ID = "";
-    }//GEN-LAST:event_clearActionPerformed
-
-    private void editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editActionPerformed
-        String name = Tname.getText();
-        String address = Taddress.getText();
-        String telp = Ttelp.getText();
-
-        if (address.isEmpty() || name.isEmpty() || telp.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Please Fill The Data!");
-        } else if (ID.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Select Data You Want To Edit!");
-        } else {
-            try {
-                Connection conn = ConnectionDB.conn();
-                String sqlQuery = "update employees set name ='" + name + "', telp = '" + telp + "', address = '" + address + "' where id = " + ID;
-                PreparedStatement preparedStatement = conn.prepareStatement(sqlQuery);
-                preparedStatement.execute();
-                JOptionPane.showMessageDialog(null, "Data Edited!");
-                this.ID = "";
-            } catch (Exception ex) {
-                JOptionPane.showMessageDialog(null, ex.toString());
-            }
-
-            showTable(employees);
-            Tname.setText("");
-            Taddress.setText("");
-            Ttelp.setText("");
-        }
-    }//GEN-LAST:event_editActionPerformed
-
-    private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
-        if (ID.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Select Data You Want To Delete!");
-        } else {
-            try {
-                Connection conn = ConnectionDB.conn();
-                String sqlQuery = "delete from employees where id = " + ID;
-                PreparedStatement preparedStatement = conn.prepareStatement(sqlQuery);
-                preparedStatement.execute();
-                JOptionPane.showMessageDialog(null, "Data Deleted!");
-            } catch (Exception ex) {
-                JOptionPane.showMessageDialog(null, ex.toString());
-            }
-            showTable(employees);
-            Tname.setText("");
-            Taddress.setText("");
-            Ttelp.setText("");
-            ID = "";
-        }
-    }//GEN-LAST:event_deleteActionPerformed
-
-    private void employeesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_employeesMouseClicked
-        int row = employees.rowAtPoint(evt.getPoint());
-
-        String name = employees.getValueAt(row, 1).toString();
-        String telp = employees.getValueAt(row, 2).toString();
-        String address = employees.getValueAt(row, 3).toString();
-
-        ID = employees.getModel().getValueAt(employees.getSelectedRow(), 4).toString();
-        Tname.setText(name);
-        Ttelp.setText(telp);
-        Taddress.setText(address);
-
-    }//GEN-LAST:event_employeesMouseClicked
+    private void employeeTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_employeeTableMouseClicked
+//        int row = employeeTable.rowAtPoint(evt.getPoint());
+//
+//        String username = employeeTable.getValueAt(row, 1).toString();
+//        String password = employeeTable.getValueAt(row, 2).toString();
+//        int roleIndex = Integer.parseInt(employeeTable.getValueAt(row, 3).toString());
+//        String name =  employeeTable.getValueAt(row, 4).toString();
+//        String phone = employeeTable.getValueAt(row, 5).toString();
+//        String address = employeeTable.getValueAt(row, 6).toString();
+//
+//        this.ID = Integer.parseInt(employeeTable.getValueAt(row, 0).toString());
+//
+//        etUsername.setText(username);
+//        etPassword.setText(password);
+//        etRole.setSelectedIndex(roleIndex - 1);
+//        etName.setText(name);
+//        etPhone.setText(phone);
+//        etAddress.setText(address);
+    }//GEN-LAST:event_employeeTableMouseClicked
 
     private void showTable(JTable table) {
         DefaultTableModel tableModel = new DefaultTableModel();
         tableModel.addColumn("#");
+        tableModel.addColumn("Username");
+        tableModel.addColumn("Password");
+        tableModel.addColumn("Role");
         tableModel.addColumn("Name");
-        tableModel.addColumn("Telp");
         tableModel.addColumn("address");
-        tableModel.addColumn("");
+        tableModel.addColumn("Telp");
 
         try {
             Connection conn = ConnectionDB.conn();
-            String sqlQuery = "select*from employees";
+            String sqlQuery = "select b.*, c.name, a.* from user as a inner join detail_user as b on a.id = b.user_id right join role as c on a.role_id = c.id";
             Statement statement = conn.createStatement();
             ResultSet resultSet = statement.executeQuery(sqlQuery);
             int no = 0;
@@ -321,11 +159,13 @@ public class Employees extends javax.swing.JInternalFrame {
             while (resultSet.next()) {
                 no++;
                 tableModel.addRow(new Object[]{
-                    no,
-                    resultSet.getString(2),
-                    resultSet.getString(3),
-                    resultSet.getString(4),
-                    resultSet.getString(1)
+                        no,
+                        resultSet.getString(8),
+                        resultSet.getString(9),
+                        resultSet.getString(6),
+                        resultSet.getString(3),
+                        resultSet.getString(5),
+                        resultSet.getString(4)
                 });
             }
 
@@ -335,23 +175,13 @@ public class Employees extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, e.toString());
         }
 
-        employees.removeColumn(employees.getColumnModel().getColumn(4));
+//        employeeTable.removeColumn(employeeTable.getColumnModel().getColumn(6));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel LAddress;
-    private javax.swing.JLabel LName;
-    private javax.swing.JTextField Taddress;
-    private javax.swing.JTextField Tname;
-    private javax.swing.JTextField Ttelp;
-    private javax.swing.JButton clear;
-    private javax.swing.JButton delete;
-    private javax.swing.JButton edit;
-    private javax.swing.JTable employees;
+    private javax.swing.JTable employeeTable;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JButton submit;
-    private javax.swing.JLabel telp;
     // End of variables declaration//GEN-END:variables
 private String ID = "";
 }

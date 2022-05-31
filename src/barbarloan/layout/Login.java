@@ -162,13 +162,14 @@ public class Login extends javax.swing.JFrame {
             
             if (resultSet.next()) {
                 JOptionPane.showMessageDialog(null,"Login successful");
-                
+
+                this.setVisible(false);
                 if (roleIndex == 1) {
-                    this.setVisible(false);
-                    new DashboardAdmin().setVisible(true);   
+                    new DashboardAdmin().setVisible(true);
                 } else {
-                    this.setVisible(true);
-                    JOptionPane.showMessageDialog(null,"You are an employee!");
+//                    this.setVisible(true);
+//                    JOptionPane.showMessageDialog(null,"You are an employee!");
+                    new DashboardEmployee(username).setVisible(true);
                 }
             } else {
                 JOptionPane.showMessageDialog(null,"Invalid username or password or role");
@@ -211,7 +212,7 @@ public class Login extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DashboardAdmin().setVisible(true);
+                new Login().setVisible(true);
             }
         });
     }

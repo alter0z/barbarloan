@@ -8,20 +8,22 @@ import barbarloan.connection.ConnectionDB;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
 /**
  *
  * @author Ansori San
  */
-public class DashboardAdmin extends javax.swing.JFrame {
+public class DashboardEmployee extends javax.swing.JFrame {
 
     /**
      * Creates new form DashboardAdmin
      */
-    public DashboardAdmin() {
-        initComponents();
-        this.showTable(reqTable);
+    public DashboardEmployee(String username) {
+        initComponents(username);
+        this.showTable(reqTable,username);
     }
 
     /**
@@ -31,7 +33,7 @@ public class DashboardAdmin extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents(String username) {
 
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -42,13 +44,8 @@ public class DashboardAdmin extends javax.swing.JFrame {
         tvRequest = new javax.swing.JLabel();
         Logout = new javax.swing.JButton();
         jMenuBar2 = new javax.swing.JMenuBar();
-        Data = new javax.swing.JMenu();
-        employees = new javax.swing.JMenuItem();
-        usersMenuItem = new javax.swing.JMenuItem();
-        tools = new javax.swing.JMenuItem();
-        Log = new javax.swing.JMenu();
+        menuBorrow = new javax.swing.JMenu();
         borrow = new javax.swing.JMenuItem();
-        returns = new javax.swing.JMenuItem();
 
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
@@ -57,7 +54,7 @@ public class DashboardAdmin extends javax.swing.JFrame {
         jMenuBar1.add(jMenu2);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
-        setTitle("Admin Dashboard");
+        setTitle("Employee Dashboard");
 
         reqTable.setFont(new java.awt.Font("Product Sans", 0, 12)); // NOI18N
         reqTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -77,15 +74,6 @@ public class DashboardAdmin extends javax.swing.JFrame {
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
-            }
-        });
-        reqTable.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                try {
-                    reqTableMouseClicked(evt);
-                } catch (SQLException e) {
-                    throw new RuntimeException(e);
-                }
             }
         });
         jScrollPane1.setViewportView(reqTable);
@@ -145,69 +133,19 @@ public class DashboardAdmin extends javax.swing.JFrame {
 
         jMenuBar2.setFont(new java.awt.Font("Product Sans", 0, 12)); // NOI18N
 
-        Data.setText("Data");
-        Data.setFont(new java.awt.Font("Product Sans", 0, 12)); // NOI18N
-
-        employees.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        employees.setFont(new java.awt.Font("Product Sans", 0, 12)); // NOI18N
-        employees.setText("Employees");
-        employees.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                employeesMouseClicked(evt);
-            }
-        });
-        employees.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                employeesActionPerformed(evt);
-            }
-        });
-        Data.add(employees);
-
-        usersMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        usersMenuItem.setText("Users");
-        usersMenuItem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                usersMenuItemActionPerformed(evt);
-            }
-        });
-        Data.add(usersMenuItem);
-
-        tools.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        tools.setFont(new java.awt.Font("Product Sans", 0, 12)); // NOI18N
-        tools.setText("Tools");
-        tools.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                toolsActionPerformed(evt);
-            }
-        });
-        Data.add(tools);
-
-        jMenuBar2.add(Data);
-
-        Log.setText("Log");
-        Log.setFont(new java.awt.Font("Product Sans", 0, 12)); // NOI18N
+        menuBorrow.setText("Borrow");
+        menuBorrow.setFont(new java.awt.Font("Product Sans", 0, 12)); // NOI18N
 
         borrow.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_B, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        borrow.setFont(new java.awt.Font("Product Sans", 0, 12)); // NOI18N
-        borrow.setText("Borrow");
+        borrow.setText("Borrow Tools");
         borrow.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                borrowActionPerformed(evt);
+                borrowActionPerformed(evt,username);
             }
         });
-        Log.add(borrow);
+        menuBorrow.add(borrow);
 
-        returns.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        returns.setFont(new java.awt.Font("Product Sans", 0, 12)); // NOI18N
-        returns.setText("Return");
-        returns.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                returnsActionPerformed(evt);
-            }
-        });
-        Log.add(returns);
-
-        jMenuBar2.add(Log);
+        jMenuBar2.add(menuBorrow);
 
         setJMenuBar(jMenuBar2);
 
@@ -225,60 +163,18 @@ public class DashboardAdmin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void returnsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnsActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_returnsActionPerformed
-
-    private void employeesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_employeesActionPerformed
-        Employees employees = new Employees();
-        jDesktopPane1.add(employees);
-        employees.setVisible(true);
-    }//GEN-LAST:event_employeesActionPerformed
-
-    private void employeesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_employeesMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_employeesMouseClicked
-
-    private void toolsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_toolsActionPerformed
-       Tools tools = new Tools();
-        jDesktopPane1.add(tools);
-        tools.setVisible(true);
-    }//GEN-LAST:event_toolsActionPerformed
-
-    private void borrowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_borrowActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_borrowActionPerformed
-
     private void LogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogoutActionPerformed
         this.setVisible(false);
         new Login().setVisible(true);
     }//GEN-LAST:event_LogoutActionPerformed
 
-    private void usersMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usersMenuItemActionPerformed
-        User users = new User();
-        jDesktopPane1.add(users);
-        users.setVisible(true);
-    }//GEN-LAST:event_usersMenuItemActionPerformed
+    private void borrowActionPerformed(java.awt.event.ActionEvent evt, String username) {//GEN-FIRST:event_borrowActionPerformed
+        BorrowTools borrowTools = new BorrowTools(username);
+        jDesktopPane1.add(borrowTools);
+        borrowTools.setVisible(true);
+    }//GEN-LAST:event_borrowActionPerformed
 
-    private void reqTableMouseClicked(java.awt.event.MouseEvent evt) throws SQLException {//GEN-FIRST:event_reqTableMouseClicked
-        ID = reqTable.getModel().getValueAt(reqTable.getSelectedRow(), 7).toString();
-//        JOptionPane.showMessageDialog(null, ID);
-        int option = JOptionPane.showConfirmDialog(null,"Are u sure to accept this request?","atention",JOptionPane.YES_NO_OPTION);
-        if (option == 0) {
-            try {
-                Connection conn = ConnectionDB.conn();
-                String insertQuery = "insert into loan_list values (null,"+ID+",'-')";
-                PreparedStatement preparedStatement = conn.prepareStatement(insertQuery);
-                preparedStatement.execute();
-                JOptionPane.showMessageDialog(null, "You have accept request borrow");
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Stock Must Number!");
-                JOptionPane.showMessageDialog(null, e.toString());
-            }
-        }
-    }//GEN-LAST:event_reqTableMouseClicked
-
-    private void showTable(JTable table) {
+    public void showTable(JTable table, String username) {
         DefaultTableModel tableModel = new DefaultTableModel();
         tableModel.addColumn("#");
         tableModel.addColumn("Employee Name");
@@ -289,9 +185,10 @@ public class DashboardAdmin extends javax.swing.JFrame {
         tableModel.addColumn("Return Date");
         tableModel.addColumn("");
 
+
         try {
             Connection conn = ConnectionDB.conn();
-            String sqlQuery = "select a.quantity, a.status, a.loan_date, a.return_date, b.name, c.name, a.id from request as a join detail_user as b on a.detailUser_id = b.id join tool as c on a.tool_id = c.id";
+            String sqlQuery = "select a.quantity, a.status, a.loan_date, a.return_date, b.name, c.name, d.username from request as a inner join detail_user as b on a.detailUser_id = b.id right join tool as c on a.tool_id - c.id right join user as d on b.user_id = d.id where d.username = '"+username+"'";
             Statement statement = conn.createStatement();
             ResultSet resultSet = statement.executeQuery(sqlQuery);
             int no = 0;
@@ -305,8 +202,7 @@ public class DashboardAdmin extends javax.swing.JFrame {
                         resultSet.getString(1),
                         resultSet.getString(2),
                         resultSet.getString(3),
-                        resultSet.getString(4),
-                        resultSet.getString(7)
+                        resultSet.getString(4)
                 });
             }
 
@@ -319,23 +215,21 @@ public class DashboardAdmin extends javax.swing.JFrame {
         reqTable.removeColumn(reqTable.getColumnModel().getColumn(7));
     }
 
+    public JTable getReqTable() {
+        return reqTable;
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private String ID = "";
-    private javax.swing.JMenu Data;
-    private javax.swing.JMenu Log;
     private javax.swing.JButton Logout;
     private javax.swing.JMenuItem borrow;
-    private javax.swing.JMenuItem employees;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JMenu menuBorrow;
     private javax.swing.JTable reqTable;
-    private javax.swing.JMenuItem returns;
-    private javax.swing.JMenuItem tools;
     private javax.swing.JLabel tvRequest;
-    private javax.swing.JMenuItem usersMenuItem;
     // End of variables declaration//GEN-END:variables
 }
