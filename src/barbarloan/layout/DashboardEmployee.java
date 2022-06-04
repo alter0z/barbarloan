@@ -9,6 +9,7 @@ import barbarloan.connection.ConnectionDB;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
@@ -76,6 +77,11 @@ public class DashboardEmployee extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        reqTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                reqTableMouseClicked(evt, username);
+            }
+        });
         jScrollPane1.setViewportView(reqTable);
 
         tvRequest.setFont(new java.awt.Font("Product Sans", 1, 18)); // NOI18N
@@ -140,7 +146,7 @@ public class DashboardEmployee extends javax.swing.JFrame {
         borrow.setText("Borrow Tools");
         borrow.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                borrowActionPerformed(evt,username);
+                borrowActionPerformed(evt, username);
             }
         });
         menuBorrow.add(borrow);
@@ -174,6 +180,25 @@ public class DashboardEmployee extends javax.swing.JFrame {
         borrowTools.setVisible(true);
     }//GEN-LAST:event_borrowActionPerformed
 
+    private void reqTableMouseClicked(java.awt.event.MouseEvent evt, String username) {//GEN-FIRST:event_reqTableMouseClicked
+        ID = reqTable.getModel().getValueAt(reqTable.getSelectedRow(), 7).toString();
+//        JOptionPane.showMessageDialog(null, ID);
+        int option = JOptionPane.showConfirmDialog(null,"Are u sure to return this tools?","atention",JOptionPane.YES_NO_OPTION);
+        if (option == 0) {
+            try {
+                Connection conn = ConnectionDB.conn();
+                String insertQuery = "delete from loan_list where id = "+ID;
+                PreparedStatement preparedStatement = conn.prepareStatement(insertQuery);
+                preparedStatement.execute();
+                JOptionPane.showMessageDialog(null, "You have request returning borrow");
+                showTable(reqTable,username);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Stock Must Number!");
+                JOptionPane.showMessageDialog(null, e.toString());
+            }
+        }
+    }//GEN-LAST:event_reqTableMouseClicked
+
     public void showTable(JTable table, String username) {
         DefaultTableModel tableModel = new DefaultTableModel();
         tableModel.addColumn("#");
@@ -188,7 +213,7 @@ public class DashboardEmployee extends javax.swing.JFrame {
 
         try {
             Connection conn = ConnectionDB.conn();
-            String sqlQuery = "select a.quantity, a.status, a.loan_date, a.return_date, b.name, c.name, d.username from request as a inner join detail_user as b on a.detailUser_id = b.id right join tool as c on a.tool_id - c.id right join user as d on b.user_id = d.id where d.username = '"+username+"'";
+            String sqlQuery = "select a.quantity, a.status, a.loan_date, a.return_date, b.name, c.name, d.username, e.id from request as a join loan_list as e on a.id = e.request_id join detail_user as b on a.detailUser_id = b.id join tool as c on a.tool_id = c.id join user as d on b.user_id = d.id where d.username = '"+username+"'";
             Statement statement = conn.createStatement();
             ResultSet resultSet = statement.executeQuery(sqlQuery);
             int no = 0;
@@ -202,7 +227,8 @@ public class DashboardEmployee extends javax.swing.JFrame {
                         resultSet.getString(1),
                         resultSet.getString(2),
                         resultSet.getString(3),
-                        resultSet.getString(4)
+                        resultSet.getString(4),
+                        resultSet.getString(8)
                 });
             }
 
@@ -220,6 +246,7 @@ public class DashboardEmployee extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private String ID = "";
     private javax.swing.JButton Logout;
     private javax.swing.JMenuItem borrow;
     private javax.swing.JDesktopPane jDesktopPane1;

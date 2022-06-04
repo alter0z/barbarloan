@@ -186,10 +186,12 @@ public class BorrowTools extends javax.swing.JInternalFrame {
                 if (getToolsStock > getCompareStock) {
                     JOptionPane.showMessageDialog(null, "Your quantity exceed of tool's stock");
                 } else {
-                    String insertQuery = "insert into request values (null, "+detailUserID+","+getToolsID+","+getToolsStock+",'Loan',now(),date_add(now(), interval 1 month))";
+                    String insertQuery = "insert into request values (null, "+detailUserID+","+getToolsID+","+getToolsStock+",'Borrow',now(),now())";
                     PreparedStatement preparedStatement = conn.prepareStatement(insertQuery);
                     preparedStatement.execute();
                     JOptionPane.showMessageDialog(null, "You have request borrow");
+                    DashboardEmployee dashboardEmployee = new DashboardEmployee(username);
+                    dashboardEmployee.showTable(dashboardEmployee.getReqTable(),username);
                 }
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(null, "Stock Must Number!");

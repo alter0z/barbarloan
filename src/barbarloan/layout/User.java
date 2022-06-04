@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.Objects;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -268,37 +269,51 @@ public class User extends javax.swing.JInternalFrame {
         
         try {
             Connection conn = ConnectionDB.conn();
-            String userAddSqlQuery = "insert into user values(null, '" + username + "','" + password + "'," + roleIndex + ")";
-            PreparedStatement preparedUserStatement = conn.prepareStatement(userAddSqlQuery);
-            preparedUserStatement.execute();
-            
-            Statement statement = conn.createStatement();
-            
-            String getUserInfoQuery = "select * from user where username = '" + username +"' and password = '" + password + "' and role_id = "+ roleIndex;
-            ResultSet userInfoResultSet = statement.executeQuery(getUserInfoQuery);
-            
-            int i = 1;
-            
-            int user_id = 0;
-            
-            while (userInfoResultSet.next()) {
-                if (i == 1) {                    
-                    user_id = userInfoResultSet.getInt(1);
-                    break;
-                }
+            String usernameSqlQuery = "SELECT username from user";
+            Statement statementUsername = conn.createStatement();
+            ResultSet usernameResultSet = statementUsername.executeQuery(usernameSqlQuery);
+
+            boolean isUsernameExist = false;
+
+            while (usernameResultSet.next()) {
+                isUsernameExist = Objects.equals(usernameResultSet.getString(1), username);
             }
-            
-            String detailUserAddSqlQuery = "insert into detail_user values(null,"
-                + user_id + ","
-                + "'" + name + "',"
-                + "'" + phone + "',"
-                + "'" + address + "')";
-                
-            PreparedStatement preparedDetailUserAddStatement = conn.prepareStatement(detailUserAddSqlQuery);
-            preparedDetailUserAddStatement.execute();
-            
-            
-            JOptionPane.showMessageDialog(null, "Data Added!");
+
+            if (!isUsernameExist) {
+                String userAddSqlQuery = "insert into user values(null, '" + username + "','" + password + "'," + roleIndex + ")";
+                PreparedStatement preparedUserStatement = conn.prepareStatement(userAddSqlQuery);
+                preparedUserStatement.execute();
+
+                Statement statement = conn.createStatement();
+
+                String getUserInfoQuery = "select * from user where username = '" + username +"' and password = '" + password + "' and role_id = "+ roleIndex;
+                ResultSet userInfoResultSet = statement.executeQuery(getUserInfoQuery);
+
+                int i = 1;
+
+                int user_id = 0;
+
+                while (userInfoResultSet.next()) {
+                    if (i == 1) {
+                        user_id = userInfoResultSet.getInt(1);
+                        break;
+                    }
+                }
+
+                String detailUserAddSqlQuery = "insert into detail_user values(null,"
+                        + user_id + ","
+                        + "'" + name + "',"
+                        + "'" + phone + "',"
+                        + "'" + address + "')";
+
+                PreparedStatement preparedDetailUserAddStatement = conn.prepareStatement(detailUserAddSqlQuery);
+                preparedDetailUserAddStatement.execute();
+
+
+                JOptionPane.showMessageDialog(null, "Data Added!");
+            } else {
+                JOptionPane.showMessageDialog(null, "Username already exist!");
+            }
             
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "Add Data Failed!");
@@ -362,13 +377,21 @@ public class User extends javax.swing.JInternalFrame {
         
         try {
             Connection conn = ConnectionDB.conn();
+            String deleteLogStatusSqlQuery = "delete from log_status where detailUser_id = " + this.ID;
+            PreparedStatement preparedDeleteLogStatusStatement = conn.prepareStatement(deleteLogStatusSqlQuery);
+            preparedDeleteLogStatusStatement.execute();
+
+            String deleteRequestSqlQuery = "delete from request where detailUser_id = " + this.ID;
+            PreparedStatement preparedDeleteRequestStatement = conn.prepareStatement(deleteRequestSqlQuery);
+            preparedDeleteRequestStatement.execute();
+
+            String deleteDetailUserSqlQuery = "delete from detail_user where id = " + this.ID;
+            PreparedStatement preparedDeleteDetailUserStatement = conn.prepareStatement(deleteDetailUserSqlQuery);
+            preparedDeleteDetailUserStatement.execute();
+
             String deleteUserSqlQuery = "delete from user where id = " + this.ID;
             PreparedStatement preparedDeleteUserStatement = conn.prepareStatement(deleteUserSqlQuery);
             preparedDeleteUserStatement.execute();
-            
-            String deleteDetailUserSqlQuery = "delete from detail_user where user_id = " + this.ID;
-            PreparedStatement preparedDeleteDetailUserStatement = conn.prepareStatement(deleteDetailUserSqlQuery);
-            preparedDeleteDetailUserStatement.execute();
             
             JOptionPane.showMessageDialog(null, "Data Deleted!");    
         } catch (Exception ex) {

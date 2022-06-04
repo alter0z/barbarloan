@@ -4,35 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e14409b9-9856-485b-bb2c-cdfa727a0441" name="Changes" comment="fix req">
-      <change afterPath="$PROJECT_DIR$/src/barbarloan/layout/BorrowTools.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/barbarloan/layout/BorrowTools.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/barbarloan/layout/DashboardEmployee.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/barbarloan/layout/DashboardEmployee.java" afterDir="false" />
+    <list default="true" id="e14409b9-9856-485b-bb2c-cdfa727a0441" name="Changes" comment="add request, employee dashboard, borrow tools">
+      <change afterPath="$PROJECT_DIR$/src/barbarloan/layout/LogBorrow.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/barbarloan/layout/LogBorrow.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/barbarloan/layout/LogReturn.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/barbarloan/layout/LogReturn.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nbproject/build-impl.xml" beforeDir="false" afterPath="$PROJECT_DIR$/nbproject/build-impl.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nbproject/genfiles.properties" beforeDir="false" afterPath="$PROJECT_DIR$/nbproject/genfiles.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nbproject/private/private.properties" beforeDir="false" afterPath="$PROJECT_DIR$/nbproject/private/private.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nbproject/project.properties" beforeDir="false" afterPath="$PROJECT_DIR$/nbproject/project.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nbproject/project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/nbproject/project.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/barbarloan/barbarloan/connection/ConnectionDB.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/barbarloan/barbarloan/connection/ConnectionDB.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/barbarloan/barbarloan/layout/DashboardAdmin$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/barbarloan/barbarloan/layout/DashboardAdmin$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/barbarloan/barbarloan/layout/DashboardAdmin$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/barbarloan/barbarloan/layout/DashboardAdmin$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/barbarloan/barbarloan/layout/DashboardAdmin$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/barbarloan/barbarloan/layout/DashboardAdmin$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/barbarloan/barbarloan/layout/DashboardAdmin$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/barbarloan/barbarloan/layout/DashboardAdmin$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/barbarloan/barbarloan/layout/DashboardAdmin$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/barbarloan/barbarloan/layout/DashboardAdmin$5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/barbarloan/barbarloan/layout/DashboardAdmin$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/barbarloan/barbarloan/layout/DashboardAdmin$6.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/barbarloan/barbarloan/layout/DashboardAdmin$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/barbarloan/barbarloan/layout/DashboardAdmin$7.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nbproject/private/private.xml" beforeDir="false" afterPath="$PROJECT_DIR$/nbproject/private/private.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/barbarloan/barbarloan/layout/DashboardAdmin.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/barbarloan/barbarloan/layout/DashboardAdmin.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/barbarloan/barbarloan/layout/Employees.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/barbarloan/barbarloan/layout/Employees.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/barbarloan/barbarloan/layout/Login$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/barbarloan/barbarloan/layout/Login$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/barbarloan/barbarloan/layout/Login$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/barbarloan/barbarloan/layout/Login$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/barbarloan/barbarloan/layout/Login.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/barbarloan/barbarloan/layout/Login.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/barbarloan/layout/DashboardAdmin.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/barbarloan/layout/DashboardAdmin.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/barbarloan/layout/BorrowTools.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/barbarloan/layout/BorrowTools.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/barbarloan/layout/DashboardAdmin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/barbarloan/layout/DashboardAdmin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/barbarloan/layout/Employees.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/barbarloan/layout/Employees.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/barbarloan/layout/Employees.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/barbarloan/layout/Employees.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/barbarloan/layout/DashboardEmployee.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/barbarloan/layout/DashboardEmployee.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/barbarloan/layout/DashboardEmployee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/barbarloan/layout/DashboardEmployee.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/barbarloan/layout/Login.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/barbarloan/layout/Login.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/barbarloan/layout/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/barbarloan/layout/Login.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/barbarloan/layout/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/barbarloan/layout/User.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,7 +104,14 @@
       <option name="project" value="LOCAL" />
       <updated>1654003136315</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="add request, employee dashboard, borrow tools">
+      <created>1654019734240</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1654019734240</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -136,6 +129,7 @@
     <MESSAGE value="init intellij" />
     <MESSAGE value="CRUD Employees" />
     <MESSAGE value="fix req" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix req" />
+    <MESSAGE value="add request, employee dashboard, borrow tools" />
+    <option name="LAST_COMMIT_MESSAGE" value="add request, employee dashboard, borrow tools" />
   </component>
 </project>

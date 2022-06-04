@@ -226,7 +226,9 @@ public class DashboardAdmin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void returnsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnsActionPerformed
-        // TODO add your handling code here:
+        LogReturn logReturn = new LogReturn();
+        jDesktopPane1.add(logReturn);
+        logReturn.setVisible(true);
     }//GEN-LAST:event_returnsActionPerformed
 
     private void employeesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_employeesActionPerformed
@@ -246,7 +248,9 @@ public class DashboardAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_toolsActionPerformed
 
     private void borrowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_borrowActionPerformed
-        // TODO add your handling code here:
+        LogBorrow logBorrow = new LogBorrow();
+        jDesktopPane1.add(logBorrow);
+        logBorrow.setVisible(true);
     }//GEN-LAST:event_borrowActionPerformed
 
     private void LogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogoutActionPerformed
@@ -266,11 +270,23 @@ public class DashboardAdmin extends javax.swing.JFrame {
         int option = JOptionPane.showConfirmDialog(null,"Are u sure to accept this request?","atention",JOptionPane.YES_NO_OPTION);
         if (option == 0) {
             try {
-                Connection conn = ConnectionDB.conn();
-                String insertQuery = "insert into loan_list values (null,"+ID+",'-')";
-                PreparedStatement preparedStatement = conn.prepareStatement(insertQuery);
-                preparedStatement.execute();
-                JOptionPane.showMessageDialog(null, "You have accept request borrow");
+                String duration = JOptionPane.showInputDialog("Set Duration in Days",JOptionPane.YES_OPTION);
+
+                if (!(duration == null)) {
+                    int getDuration = Integer.parseInt(duration);
+                    Connection conn = ConnectionDB.conn();
+                    String editQuery = "update request set return_date = date_add((select loan_date from request where id = "+ID+"), interval "+getDuration+" day) where id = "+ID;
+                    PreparedStatement preparedStatementEdit = conn.prepareStatement(editQuery);
+                    preparedStatementEdit.execute();
+
+                    String insertQuery = "insert into loan_list values (null,"+ID+",'-')";
+                    PreparedStatement preparedStatement = conn.prepareStatement(insertQuery);
+                    preparedStatement.execute();
+                    JOptionPane.showMessageDialog(null, "You have accept request borrow");
+                    showTable(reqTable);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Please set duration!");
+                }
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Stock Must Number!");
                 JOptionPane.showMessageDialog(null, e.toString());
