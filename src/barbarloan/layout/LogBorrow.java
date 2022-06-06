@@ -125,7 +125,7 @@ public class LogBorrow extends javax.swing.JInternalFrame {
 
         try {
             Connection conn = ConnectionDB.conn();
-            String sqlQuery = "select a.name, b.name as toolName, c.quantity, c.date, d.return_date from detail_user as a join log_status as c on a.id = c.detailUser_id join tool as b on b.id = c.tool_id join request as d on d.id = c.request_id where c.status = 'Loan'";
+            String sqlQuery = "select a.name, b.name as toolName, c.quantity, c.date, d.return_date from detail_user as a join log_status as c on a.id = c.detailUser_id join tool as b on b.id = c.tool_id join request as d on d.id = c.request_id where c.status = 'Borrow'";
             Statement statement = conn.createStatement();
             ResultSet resultSet = statement.executeQuery(sqlQuery);
             int no = 0;

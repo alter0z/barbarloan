@@ -9,13 +9,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e14409b9-9856-485b-bb2c-cdfa727a0441" name="Changes" comment="adding log borrow and return, fix checking username, backgrouning role. releasing v1.0">
+    <list default="true" id="e14409b9-9856-485b-bb2c-cdfa727a0441" name="Changes" comment="fix tools that has been return">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/barbarloan/barbarloan/layout/DashboardAdmin.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/barbarloan/barbarloan/layout/DashboardAdmin.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/barbarloan/barbarloan/layout/Login$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/barbarloan/barbarloan/layout/Login$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/barbarloan/barbarloan/layout/Login$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/barbarloan/barbarloan/layout/Login$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/barbarloan/barbarloan/layout/Login.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/barbarloan/barbarloan/layout/Login.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/barbarloan/layout/DashboardAdmin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/barbarloan/layout/DashboardAdmin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nbproject/private/private.xml" beforeDir="false" afterPath="$PROJECT_DIR$/nbproject/private/private.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/barbarloan/layout/LogBorrow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/barbarloan/layout/LogBorrow.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,7 +35,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/Ansori San/Downloads/Documents/Perkuliahan RPL/Semester 4/Object Oriented Programming/tubes",
+    "last_opened_file_path": "C:/Users/Ansori San/Downloads/Documents/Perkuliahan RPL/Semester 4/Object Oriented Programming/9/abstract",
     "project.structure.last.edited": "Artifacts",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2"
@@ -115,7 +112,14 @@
       <option name="project" value="LOCAL" />
       <updated>1654332826631</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="fix tools that has been return">
+      <created>1654335269319</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1654335269319</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -135,6 +139,7 @@
     <MESSAGE value="fix req" />
     <MESSAGE value="add request, employee dashboard, borrow tools" />
     <MESSAGE value="adding log borrow and return, fix checking username, backgrouning role. releasing v1.0" />
-    <option name="LAST_COMMIT_MESSAGE" value="adding log borrow and return, fix checking username, backgrouning role. releasing v1.0" />
+    <MESSAGE value="fix tools that has been return" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix tools that has been return" />
   </component>
 </project>
