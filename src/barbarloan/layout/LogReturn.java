@@ -45,7 +45,7 @@ public class LogReturn extends javax.swing.JInternalFrame {
         setBackground(java.awt.Color.white);
         setClosable(true);
         setResizable(true);
-        setTitle("Log borrow");
+        setTitle("Log return");
         setToolTipText("");
 
         jPanel1.setBackground(java.awt.Color.white);

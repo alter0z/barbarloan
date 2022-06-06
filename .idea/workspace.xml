@@ -9,10 +9,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e14409b9-9856-485b-bb2c-cdfa727a0441" name="Changes" comment="fix tools that has been return">
+    <list default="true" id="e14409b9-9856-485b-bb2c-cdfa727a0441" name="Changes" comment="fix log borrow">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nbproject/private/private.xml" beforeDir="false" afterPath="$PROJECT_DIR$/nbproject/private/private.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/barbarloan/layout/LogBorrow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/barbarloan/layout/LogBorrow.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -119,7 +117,14 @@
       <option name="project" value="LOCAL" />
       <updated>1654335269319</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="fix log borrow">
+      <created>1654492206754</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1654492206754</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -140,6 +145,7 @@
     <MESSAGE value="add request, employee dashboard, borrow tools" />
     <MESSAGE value="adding log borrow and return, fix checking username, backgrouning role. releasing v1.0" />
     <MESSAGE value="fix tools that has been return" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix tools that has been return" />
+    <MESSAGE value="fix log borrow" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix log borrow" />
   </component>
 </project>
